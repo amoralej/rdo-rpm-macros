@@ -1,6 +1,6 @@
 Name:           rdo-rpm-macros
 Version:        1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Compat RPM macros for RDO Packages
 
 License:        GPLv2
@@ -29,6 +29,9 @@ install -Dpm 644 %{SOURCE0} \
 
 
 %changelog
+* Wed Sep 16 2015 Haïkel Guémar <hguemar@fedoraproject.org> - 1-3
+- Add missing systemd macros
+
 * Tue Sep  8 2015 Haïkel Guémar <hguemar@fedoraproject.org> - 1-2
 - Update macros to Obsoletes previous releases
 

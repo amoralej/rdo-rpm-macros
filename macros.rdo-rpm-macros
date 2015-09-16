@@ -58,3 +58,14 @@ CFLAGS="%{optflags}" %{__python2} %{py_setup} %{?py_setup_args} build --executab
 %py2_install() %{expand:\
 CFLAGS="%{optflags}" %{__python2} %{py_setup} %{?py_setup_args} install -O1 --skip-build --root %{buildroot} %{?1}\
 }
+
+#
+# Missing systemd macros in EL7 (taken from systemd under GPL 2.1+)
+#
+%sysctl_apply() \
+/usr/lib/systemd/systemd-sysctl %{?*} >/dev/null 2>&1 || : \
+%{nil}
+
+%binfmt_apply() \
+/usr/lib/systemd/systemd-binfmt %{?*} >/dev/null 2>&1 || : \
+%{nil}
