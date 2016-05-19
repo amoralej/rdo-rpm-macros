@@ -1,6 +1,6 @@
 Name:           rdo-rpm-macros
 Version:        1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Compat RPM macros for RDO Packages
 
 License:        GPLv2
@@ -29,6 +29,10 @@ install -Dpm 644 %{SOURCE0} \
 
 
 %changelog
+* Thu May 19 2016 Alfredo Moralejo <amoralej@redhat.com> - 1-4
+- Added py2_install_locale macro
+- Added py3_install_locale macro
+
 * Wed Sep 16 2015 Haïkel Guémar <hguemar@fedoraproject.org> - 1-3
 - Add missing systemd macros
 

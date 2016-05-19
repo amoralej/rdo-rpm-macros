@@ -69,3 +69,18 @@ CFLAGS="%{optflags}" %{__python2} %{py_setup} %{?py_setup_args} install -O1 --sk
 %binfmt_apply() \
 /usr/lib/systemd/systemd-binfmt %{?*} >/dev/null 2>&1 || : \
 %{nil}
+
+%py2_install_locale() %{expand:\ 
+install -d -m 755 %{buildroot}%{_datadir} \
+/usr/bin/rm %{buildroot}%{python2_sitelib}/%{?1}/locale/*/LC_*/%{?1}*po \
+/usr/bin/rm %{buildroot}%{python2_sitelib}/%{?1}/locale/*pot || : \
+/usr/bin/mv %{buildroot}%{python2_sitelib}/%{?1}/locale %{buildroot}%{_datadir}/locale \
+}
+
+%py3_install_locale() %{expand:\ 
+install -d -m 755 %{buildroot}%{_datadir} \
+/usr/bin/rm %{buildroot}%{python3_sitelib}/%{?1}/locale/*/LC_*/%{?1}*po \
+/usr/bin/rm %{buildroot}%{python3_sitelib}/%{?1}/locale/*pot || : \
+/usr/bin/mv %{buildroot}%{python3_sitelib}/%{?1}/locale %{buildroot}%{_datadir}/locale \
+}
+
